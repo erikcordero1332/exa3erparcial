@@ -1,0 +1,203 @@
+create table alimentos_tabla(
+    id_alimentos number(5),
+    nombre varchar2(50),
+    precio number(5),
+    num_tipo number(3),
+    num_marca number(3)
+);
+
+create table tipos_tabla(
+    id_tipos number(5),
+    tipo varchar2(50)
+);
+
+create table marcas_tabla(
+    id_marcas number(5),
+    marca varchar2(50)
+);
+
+create table extra_tabla(
+    mensaje varchar2(100));
+
+create or replace trigger ingresar1_trigger
+before insert
+on alimentos_tabla
+for each row
+begin
+    if(:new.num_tipo=1) then
+    insert into tipos_tabla values(:new.num_tipo,'torta');
+    elsif(:new.num_tipo=2) then
+    insert into tipos_tabla values(:new.num_tipo,'sandwich');
+    elsif(:new.num_tipo=3) then
+    insert into tipos_tabla values(:new.num_tipo,'taco');
+    elsif(:new.num_tipo=4) then
+    insert into tipos_tabla values(:new.num_tipo,'quesadilla');
+    elsif(:new.num_tipo=5) then
+    insert into tipos_tabla values(:new.num_tipo,'gringa');
+    elsif(:new.num_tipo=6) then
+    insert into tipos_tabla values(:new.num_tipo,'tamal');
+    elsif(:new.num_tipo=7) then
+    insert into tipos_tabla values(:new.num_tipo,'comida rapida');
+    elsif(:new.num_tipo=8) then
+    insert into tipos_tabla values(:new.num_tipo,'atole');
+    elsif(:new.num_tipo=9) then
+    insert into tipos_tabla values(:new.num_tipo,'agua');
+    elsif(:new.num_tipo=10) then
+    insert into tipos_tabla values(:new.num_tipo,'cacahuates');
+    elsif(:new.num_tipo=11) then
+    insert into tipos_tabla values(:new.num_tipo,'refresco');
+    elsif(:new.num_tipo=12) then
+    insert into tipos_tabla values(:new.num_tipo,'gordita');
+    elsif(:new.num_tipo=13) then
+    insert into tipos_tabla values(:new.num_tipo,'pizza');
+    elsif(:new.num_tipo=14) then
+    insert into tipos_tabla values(:new.num_tipo,'frituras');
+    elsif(:new.num_tipo=15) then
+    insert into tipos_tabla values(:new.num_tipo,'chilaquiles');
+    elsif(:new.num_tipo=16) then
+    insert into tipos_tabla values(:new.num_tipo,'enchiladas');
+    elsif(:new.num_tipo=17) then
+    insert into tipos_tabla values(:new.num_tipo,'fruta');
+    elsif(:new.num_tipo=18) then
+    insert into tipos_tabla values(:new.num_tipo,'bebida caliente');
+    elsif(:new.num_tipo=19) then
+    insert into tipos_tabla values(:new.num_tipo,'dulce');
+    elsif(:new.num_tipo=20) then
+    insert into tipos_tabla values(:new.num_tipo,'desayuno');
+    end if;
+end ingresar1_trigger;
+
+create or replace trigger ingresar2_trigger
+before insert
+on alimentos_tabla
+for each row
+begin
+    if(:new.num_marca=1) then
+    insert into marcas_tabla values(:new.num_tipo,'el tio');
+    elsif(:new.num_marca=2) then
+    insert into marcas_tabla values(:new.num_tipo,'la amiga');
+    elsif(:new.num_marca=3) then
+    insert into marcas_tabla values(:new.num_tipo,'la toña');
+    elsif(:new.num_marca=4) then
+    insert into marcas_tabla values(:new.num_tipo,'la tamalera');
+    elsif(:new.num_marca=5) then
+    insert into marcas_tabla values(:new.num_tipo,'el homie');
+    elsif(:new.num_marca=6) then
+    insert into marcas_tabla values(:new.num_tipo,'el timador');
+    elsif(:new.num_marca=7) then
+    insert into marcas_tabla values(:new.num_tipo,'la doña');
+    end if;
+end ingresar2_trigger;
+
+create or replace trigger ingresar3_trigger
+before insert
+on alimentos_tabla
+for each row
+begin
+    if(substr(:new.nombre,1,1)='t') then
+    insert into extra_tabla values('Se insertó un producto con vitamina T :' || :new.nombre);
+    end if;
+end ingresar3_trigger;
+
+
+insert into alimentos_tabla values(1,'torta de jamón',40,1,1);
+insert into alimentos_tabla values(2,'torta de salchicha',40,1,1);
+insert into alimentos_tabla values(3,'torta de pastor',45,1,1);
+insert into alimentos_tabla values(4,'torta de suadero',45,1,1);
+insert into alimentos_tabla values(5,'torta campechana',50,1,1);
+insert into alimentos_tabla values(6,'torta de milanesa',45,1,1);
+insert into alimentos_tabla values(7,'torta de pierna',45,1,1);
+insert into alimentos_tabla values(8,'sandwich de jamón',25,2,1);
+insert into alimentos_tabla values(9,'sandwich de salchicha',25,2,1);
+insert into alimentos_tabla values(10,'sandwich de pastor',30,2,1);
+insert into alimentos_tabla values(11,'sandwich de suadero',30,2,1);
+insert into alimentos_tabla values(12,'sandwich campechana',35,2,1);
+insert into alimentos_tabla values(13,'sandwich de milanesa',30,2,1);
+insert into alimentos_tabla values(14,'sandwich de pierna',30,2,1);
+insert into alimentos_tabla values(15,'taco de suadero',22,3,1);
+insert into alimentos_tabla values(16,'taco de pastor',22,3,1);
+insert into alimentos_tabla values(17,'taco campechano',22,3,1);
+insert into alimentos_tabla values(18,'taco de canasta',18,3,2);
+insert into alimentos_tabla values(19,'quesadilla de queso',25,4,3);
+insert into alimentos_tabla values(20,'quesadilla de pollo',25,4,3);
+insert into alimentos_tabla values(21,'gringa de pastor',35,5,1);
+insert into alimentos_tabla values(22,'gringa de suadero',35,5,1);
+insert into alimentos_tabla values(23,'tamal verde',18,6,4);
+insert into alimentos_tabla values(24,'tamal rojo',18,6,4);
+insert into alimentos_tabla values(25,'tamal de mole',18,6,4);
+insert into alimentos_tabla values(26,'tamal dulce',18,6,4);
+insert into alimentos_tabla values(27,'tamal oaxaqueño',22,6,4);
+insert into alimentos_tabla values(28,'hot dogs',35,7,4);
+insert into alimentos_tabla values(29,'atole de chocolate',18,8,4);
+insert into alimentos_tabla values(30,'atole de galleta',18,8,4);
+insert into alimentos_tabla values(31,'atole de fresa',18,8,4);
+insert into alimentos_tabla values(32,'atole de vainilla',18,8,4);
+insert into alimentos_tabla values(33,'agua natural',13,9,5);
+insert into alimentos_tabla values(34,'agua de limon',17,9,2);
+insert into alimentos_tabla values(35,'agua de horchata',17,9,2);
+insert into alimentos_tabla values(36,'agua de jamaica',17,9,2);
+insert into alimentos_tabla values(37,'agua de piña colada',17,9,2);
+insert into alimentos_tabla values(38,'agua de frutos tropicales',17,9,2);
+insert into alimentos_tabla values(39,'agua de carlos quinto',17,9,2);
+insert into alimentos_tabla values(40,'cacahuates japoneses',6,10,5);
+insert into alimentos_tabla values(41,'cacahuates españoles',6,10,5);
+insert into alimentos_tabla values(42,'cacahuates enchilados',6,10,5);
+insert into alimentos_tabla values(43,'refresco de cola',16,11,5);
+insert into alimentos_tabla values(44,'refresco de manzana',16,11,5);
+insert into alimentos_tabla values(45,'refresco de tutifruti',16,11,5);
+insert into alimentos_tabla values(46,'refresco de limon',16,11,5);
+insert into alimentos_tabla values(47,'refresco de tamarindo',16,11,5);
+insert into alimentos_tabla values(48,'refresco de toronja',16,11,5);
+insert into alimentos_tabla values(49,'refrsco de uva',16,11,5);
+insert into alimentos_tabla values(50,'gordita de chicharron',40,12,1);
+insert into alimentos_tabla values(51,'gordita de longaniza',40,12,1);
+insert into alimentos_tabla values(52,'pizza hawuaiana',17,13,6);
+insert into alimentos_tabla values(53,'pizza de peperoni',17,13,6);
+insert into alimentos_tabla values(54,'pizza a la mexicana',17,13,6);
+insert into alimentos_tabla values(55,'papas fritas',10,14,5);
+insert into alimentos_tabla values(56,'chilaquiles verdes',50,15,3);
+insert into alimentos_tabla values(57,'chilaquiles rojos',50,15,3);
+insert into alimentos_tabla values(58,'enchiladas verdes',50,16,3);
+insert into alimentos_tabla values(59,'enchiladas rojas',50,16,3);
+insert into alimentos_tabla values(60,'coctel de frutas',50,17,7);
+insert into alimentos_tabla values(61,'café',20,18,7);
+insert into alimentos_tabla values(62,'te',20,18,7);
+insert into alimentos_tabla values(63,'chicles',2,19,5);
+insert into alimentos_tabla values(64,'mentas',10,19,5);
+insert into alimentos_tabla values(65,'mazapán normal',9,19,5);
+insert into alimentos_tabla values(66,'mazapán de chocolate',6,19,5);
+insert into alimentos_tabla values(67,'cigarros',7,20,5);
+
+
+insert into tipos_tabla values(21,'cerveza');
+insert into tipos_tabla values(22,'blue');
+insert into tipos_tabla values(23,'paloma');
+insert into tipos_tabla values(24,'cantarito');
+insert into tipos_tabla values(25,'mojito');
+
+insert into marcas_tabla values(8,'caverna');
+insert into marcas_tabla values(9,'ranchito');
+insert into marcas_tabla values(10,'pariente');
+insert into marcas_tabla values(11,'oxxo');
+insert into marcas_tabla values(12,'aurrera');
+
+
+
+
+select * from alimentos_tabla full join tipos_tabla on alimentos_tabla.num_tipo = tipos_tabla.id_tipo full join marcas_tabla on alimentos_tabla.num_marca = marcas_tabla.id_marca;
+select * from alimentos_tabla inner join tipos_tabla on alimentos_tabla.num_tipo = 3 and tipos_tabla.id_tipo = 3 and alimentos_tabla.nombre = 'taco de canasta';
+select * from alimentos_tabla left join tipos_tabla on alimentos_tabla.num_tipo = tipos_tabla.id_tipo;
+select * from alimentos_tabla right join marcas_tabla on alimentos_tabla.num_marca != marcas_tabla.id_marca;
+select * from alimentos_tabla full join tipos_tabla on alimentos_tabla.num_tipo != tipos_tabla.id_tipo full join marcas_tabla on alimentos_tabla.num_marca != marcas_tabla.id_marca;
+
+select * from alimentos_tabla;
+select * from tipos_tabla;
+select * from marcas_tabla;
+select * from extra_tabla;
+drop table alimentos_tabla;
+drop table tipos_tabla;
+drop table marcas_tabla;
+drop table extra_tabla;
+drop trigger ingresar1_trigger;
+drop trigger ingresar2_trigger;
+drop trigger ingresar3_trigger;
